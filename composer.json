@@ -1,0 +1,21 @@
+{
+    "name": "dieschittigs/poool-client",
+    "description": "Basic Poool API Client",
+    "type": "library",
+    "version": "0.1.0",
+    "license": "ISC",
+    "authors": [
+        {
+            "name": "Tobias Dühr",
+            "email": "tobias@dieschittigs.de"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "DieSchittigs\\": "src/"
+        }
+    }
+}
