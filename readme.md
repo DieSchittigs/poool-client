@@ -20,10 +20,10 @@ Create an instance like this:
 And use it like this:
 
     // Get latest entries from address book
-    $addressBook = $poool->get('https://app.poool.cc/api/1/address_book?search_company=true&search_company_subsidiary=true&search_person=true&search_term=');
+    $addressBook = $poool->get('address_book?search_company=true&search_company_subsidiary=true&search_person=true&search_term=');
 
     // Search for projects
-    $poool->post('https://app.poool.cc/api/1/project/management/search', [
+    $poool->post('project/management/search', [
         "search"=>[
             "filterGroups"=>[
                 [
