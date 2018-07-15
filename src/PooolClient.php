@@ -49,7 +49,7 @@ class PooolClient{
     }
 
     public function post($url, $payload){
-        if(!is_string($payload)) $payload = json_encode($payload);
+        if(is_string($payload)) $payload = json_decode($payload);
         $opts = $this->clientOpts;
         $opts['json'] = $payload;
         $res = $this->client->request('POST', $url, $opts);
