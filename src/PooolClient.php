@@ -6,11 +6,7 @@ class PooolClient{
     
     private $client;
     private $clientOpts = [
-        'base_uri' => 'https://app.poool.cc/api/1/',
-        'headers' => [
-            'Accept' => 'application/json',
-            'Content-Type' => 'application/json'
-        ]
+        'base_uri' => 'https://app.poool.cc/api/1/'
     ];
     private $authFile;
     
@@ -48,10 +44,10 @@ class PooolClient{
         return $this->parseResult($res);
     }
 
-    public function post($url, $payload){
-        if(is_string($payload)) $payload = json_decode($payload);
+    public function post($url, $payload, $data_type = 'json'){
+        if($data_type == 'json' && is_string($payload)) $payload = json_decode($payload);
         $opts = $this->clientOpts;
-        $opts['json'] = $payload;
+        $opts[$data_type] = $payload;
         $res = $this->client->request('POST', $url, $opts);
         return $this->parseResult($res);
     }
