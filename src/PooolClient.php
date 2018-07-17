@@ -3,7 +3,7 @@
 namespace DieSchittigs;
 
 class PooolClient{
-    
+    private $auth;
     private $client;
     private $clientOpts = [
         'base_uri' => 'https://app.poool.cc/api/1/'
@@ -28,6 +28,7 @@ class PooolClient{
         if(time() - filemtime($this->authFile) > 120) return false;
         $this->clientOpts['headers']['P-Authorization'] = $auth->token;
         $this->clientOpts['headers']['P-Instance'] = $auth->activeInstanceId;
+        $this->auth = $auth;
         return true;
     }
 
@@ -37,6 +38,10 @@ class PooolClient{
         ]);
         file_put_contents($this->authFile, $res->getBody());
         $this->loadAuth($email);
+    }
+
+    public function getAuth(){
+        return $this->auth;
     }
 
     public function get($url){
