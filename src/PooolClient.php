@@ -15,7 +15,7 @@ class PooolClient{
     private $authFile;
     
     function __construct($email, $password, $authFile = null){
-        $this->authFile = $authFile ? $authFile : sys_get_temp_dir() . '/.poool_auth.json';
+        $this->authFile = $authFile ? $authFile : sys_get_temp_dir() . '/.poool_auth_'.sha1($email).'.json';
         $this->client = new \GuzzleHttp\Client($this->clientOpts);
         if(!$this->loadAuth($email)){
             $this->login($email, $password);
